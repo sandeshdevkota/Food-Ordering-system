@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup</title>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://kit.fontawesome.com/61789a3227.js" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142494086-2"></script>
+    
+
+    <!-- Favicon -->
+    <link rel="icon" href="admin-img/admin-favicon.png" rel="icon">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script>
+        function showpassword()
+        {
+           var x = document.getElementById("password");
+           if(x.type === "password")
+           {
+              x.type ="text";
+           }
+           else 
+           {
+             x.type ="password";
+           }
+        }
+    </script>
+
+</head>
+<style>
+   /* - Google Fonts //---------------- */
+   @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+*{
+	padding:0;
+	margin:0;
+}
+#main-admin-signup-section{
+    background-color: #000000;
+    position: fixed;
+    margin-top: 0%;
+    height: 100%;
+    width: 100%;
+}
+.admin-signup-main{
+    
+    height: 550px;
+    width: 400px;
+    max-width: 500px;
+    margin-top: 3%;
+    margin-left: 35%;
+    border-radius: 5px !important;
+    background-color: #191C24 !important;;
+}
+.signup-head{
+    display: flex;
+    padding-top: 10%;
+}
+.signup-head a{
+    margin-bottom: 0.5rem;
+    font-family: "Roboto",sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 28px;
+    color: #EB1616 !important;
+    line-height: 1.2;
+    margin-left: 12%;
+
+}
+.signup-head h2{
+    margin-bottom: 0.5rem;
+    font-family: "Roboto",sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-left: 17%;
+}
+.form-input input{
+    margin-top: 5%;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 0px;
+    padding: 16px 20px;
+    margin-left: 12%;
+    width: 67%;
+    line-height: 1.5;
+    background-color: #000;
+    border-radius: 5px;
+}
+::placeholder{color: #6C7293;}
+
+input[type=checkbox] {
+    accent-color: #EB1616 ;
+} 
+input:focus {
+	outline: none;
+  	border: 1px solid #EB1616;
+    color: #6C7293;
+}
+.form-control:not(:placeholder-shown){
+    color: #6C7293;
+}
+input[type=text]::after{
+    outline: none;
+  	border: 1px solid #EB1616;
+    color: rebeccapurple;
+}
+
+.form-input1{
+    margin-top: 4%;
+    font-size: 18px;
+    font-weight: 400;
+    border: 0px;
+    padding: 16px 20px;
+    margin-left: 8.50%;
+    width: 67%;
+    /* font-family: "Roboto",sans-serif; */
+    line-height: 1.5;
+    color: #6C7293;
+    width: 100%;
+}
+.form-input1 a{
+    text-decoration: none;
+    color: #EB1616;
+    margin-left: 10%;
+}
+.admin-signup-btn{
+    margin-top: -3%;
+    text-align: center;
+}
+.admin-signup-btn button{
+    background-color: #EB1616;
+    border: 0px;
+    padding: 23px 25px;
+    margin-left:9px;
+    width: 75%;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 19px;
+}
+.admin-signup-btn button:hover{
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+    background-color: rgba(149, 8, 8, 0.8);
+    color: #ffffff;
+}
+.horizontalline{margin-top: 6%; border: 1px solid #6C7293; opacity: 0.5;}
+
+.admin-login-link{text-align: center;}
+.admin-login-link a{
+    text-decoration: none;
+    font-size: 19px;
+    color: #EB1616;
+}
+</style>
+<body>
+
+    <!-- Sign Up Start -->
+<section id="main-admin-signup-section">
+        <div class="admin-signup-main">
+            <div class="admin-signup">
+                  <div class="signup-head">
+                        <a href="admin-signup.html" class="">
+                            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Pizzon</h3>
+                        </a>
+                        <h2>Sign Up</h2>
+                  </div>
+                <form class="admin-signup-form">
+                     <div class="form-input">
+                            <input type="text" class="form-control" id="username" placeholder="Username">
+                     </div>
+
+                     <div class="form-input">
+                        <input type="email" class="form-control" id="email" placeholder="Email address">
+                    </div>
+
+                    <div class="form-input">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+
+                    <div class="form-input1">
+                        <input type="checkbox" class="form-control" id="checkbox" onclick="showpassword()"  value="Show password" >
+                        <label for="checkbox">Show Password</label>
+                        <a href="admin-forgotpassword.html">Forgot Password?</a><br><br>
+                    </div>
+
+                    <div class="admin-signup-btn">
+                        <button type="button">Sign Up</button>
+                     </div>
+
+                     <hr class="horizontalline"><br>
+
+                    <div class="admin-login-link">
+                         <a href="admin-login.html">Already have an account?</a>
+                    </div>
+
+                </form>
+                  
+            </div>
+        </div>
+</section>
+</body>
+</html>

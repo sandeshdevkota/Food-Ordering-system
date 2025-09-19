@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer list</title>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://kit.fontawesome.com/61789a3227.js" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142494086-2"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    
+
+    <!-- Favicon -->
+    <link rel="icon" href="admin-img/admin-favicons.png" rel="icon">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<style>
+        /* - Google Fonts //---------------- */
+        @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Pacifico&display=swap');
+           @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+       *{
+           padding:0;
+           margin:0;
+           /* overflow-x: hidden; */
+       }
+       body{
+           overflow-x: hidden !important;
+       }
+       /* active class css */
+       .nav-bar li.active{
+           color: #EB1616 !important;
+           background-color: #000000;
+           cursor: pointer;
+           width: 180px;
+           border-left: 4px solid #EB1616 ;
+           border-top-right-radius: 50px; 
+       }
+       .nav-bar a.active{color: #EB1616;}
+       /* End active class css */
+       
+       
+       /* toggle class */
+       .toggle-class{
+           margin-left: 0% !important;
+       }
+       .nav-bar-toggle{margin-left: 45% !important;}
+       /* End toggle class */
+       
+       #slidebar-section{
+           position: fixed;
+           background-color: #191C24;
+           width: 18%;
+           height: 650px;
+           overflow-x: hidden !important;
+       }
+       .main-slidebar{
+           margin-left: 12%;
+       }
+       .slidebar-logo{margin-top: 6%;}
+       .slidebar-logo a{
+           font-family: "Roboto",sans-serif;
+           font-weight: 700;
+           text-decoration: none;
+           font-size: 28px;
+           color: #EB1616 !important;
+       
+       }
+       .slidebar-logo i{margin-right: 4%;}
+       
+       .admin-img{
+           display: inline-flex;
+           margin-top: 10%;
+       }
+       .admin-img img{
+           width: 70px;
+           height: 70px;
+           border-radius: 50%;
+       }
+       .admin-img i{
+           position: absolute;
+           color: green;
+           margin-top: 20%;
+           margin-left: 22%;
+           font-size: 10px;
+           border: 2px solid #ffff;
+           border-radius: 50%;
+       }
+       .admin-img h3{
+           color: #ffff;
+           margin-top: 8%;
+           margin-left: 10%;
+           font-size: 20px;
+       }
+       .admin-img span{
+           color: #6c7293;
+           font-size: 15px !important;
+       }
+       
+       /* Admin Horizontal Nav bar */
+       .admin-horizontal-navbar{ margin-top: 14%;}
+       .admin-horizontal-navbar ul{ list-style: none; }
+       .admin-horizontal-navbar li{
+           text-decoration:none;
+           list-style-type: none;  
+           line-height:40px;
+           margin-top: 10%;
+       }
+       .admin-horizontal-navbar a{
+           color: #6c7293;
+           text-decoration: none;
+           padding: 20px 0px;
+           font-size: 19px;
+           font-family: "Open Sans", sans-serif;
+       }
+       .admin-horizontal-navbar i{
+           width: 40px;
+           height: 40px;
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           background: #000000;
+           border-radius: 40px;
+           margin-right: 10px;
+       }
+       .admin-horizontal-navbar li:hover{
+           background-color: #000000;
+           width: 180px;
+           color: #EB1616;
+           cursor: pointer;
+           border-left: 4px solid #EB1616 ;
+           border-top-right-radius: 50px; 
+       }
+       .admin-horizontal-navbar a:hover{
+           color: #EB1616;
+       }
+       .admin-horizontal-navbar i:hover{
+           background-color: #191C24;
+       }
+       /* END Admin Horizontal Nav bar */
+       
+       /* Admin vertical Nav bar */
+       #navbar-section{
+           position: fixed;
+           background-color: #191C24;
+           width: 100%;
+           height: 63px;
+           margin-left: 18%;
+           
+       }
+       .admin-vertical-navbar{
+       
+           display: flex;
+           /* justify-content: space-between; */
+       }
+       .admin-vertical-navbar ul{
+           display: flex;
+           padding: 5px 10px;
+           list-style: none;
+       }
+       .admin-vertical-navbar li{
+           padding: 10px 20px;
+       }
+       .admin-vertical-navbar li{
+           margin-left: 0%;
+           margin-top: 5px;
+           padding: 0px 24px;
+       }
+       .admin-vertical-navbar a{ text-decoration: none;}
+       .nav-bar1 i{
+           color: #EB1616;
+           width: 40px;
+           height: 40px;
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           background: #000000;
+           border-radius: 50px;
+       }
+       
+       input[type=search]{
+           padding: 6px 12px;
+           height: 30px;
+           margin-top: 10px;
+           background: #000000;
+           border: 0px;
+           border-radius: 10px;
+       }
+       ::placeholder{color: #6C7293;}
+       
+       .form-control:not(:placeholder-shown){
+           color: #6C7293;
+       }
+       
+/* start navbar 2 */
+.nav-bar2{
+    margin-left: 27%;
+    margin-top: 0.30%;
+}
+.nav-bar2 a{color: #6C7293; font-size: 17px;}
+.dropdown-btn img{
+    width: 40px;
+    height: 40px;
+    padding-top: 0.20px;
+    border-radius: 50px;
+}
+.dropdown-btn{padding-left: 15px;}
+.notify{padding-left: 15px;}
+.nav-bar2 i{
+    color: #6C7293;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    border-radius: 50px;
+    margin-right: 5px;
+}
+
+.btntext{
+   position: absolute;
+   padding-top: 12px;
+   margin-left: 0.30%;
+}
+.dropdown-btn i{
+    background-color:transparent;
+    position: absolute;
+    padding-left: 46px;
+    margin-top: 0.15%;
+}
+.nav-bar2 a:hover{color: #EB1616;}
+.nav-bar2 i:hover{color: #EB1616;}
+
+/* DROPDOWN MESSAGE */
+#icon-message{
+    color: #6C7293;
+    background: none;
+    border-radius: 0px;
+    margin-right: -7px;
+    margin-left: -10px;
+}
+.dropdown-btn-msg i:hover{color: #EB1616 !important;}
+
+.dropdown-msg{
+    position: relative;
+    list-style:none;
+    display:inline-block;
+    background-position: center;
+}
+.dropdown-btn-msg span{
+    background-color: red; 
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    margin-left: 27px;
+}
+.dropdown-notification span{
+    background-color: red; 
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    margin-left: 27px;
+}
+.dropdown-content1{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: -11%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 10px 10px; 
+    color: #ffff;
+    width: 225px;
+    top: 40px;
+}
+.dropdown-content1 a{
+    float: none;
+    display: block;
+    padding: 7px 12px;
+    color: #ffff;
+    text-align: left;
+    padding-left: 5px;
+    font-family: 'Roboto',sans-serif;
+}
+.dropdown-content1 a:hover{
+    background-color: #000000;
+    transition: all 0.2s ease-in-out;
+}
+.dropdown-msg:hover .dropdown-content1 {
+  display: block;
+  color: #6c7293;
+  width: 225px;
+  border-radius: 5px;
+  background-color: #191C24;
+}
+.dropdown-content1 h6{
+    margin-top: 0;
+    font-size: 16px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+}
+.ms-txt a{
+    color: #6C7293; 
+    font-size: 15px; 
+    text-align: center; 
+    margin-top: 10px;
+    font-family: "Open Sans",sans-serif;
+}
+
+.dropdown-content1 small{color: #6C7293; font-size: 15px; font-family: "Open Sans",sans-serif;}
+
+
+.hr-part{ border: 1px solid #6C7293; opacity: 0.5;}
+/* dropdown toggle */
+.dropdown{
+    list-style:none;
+    display:inline-block;
+    position: relative;
+    background-position: center;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    left: 15px;
+    padding: 10px 10px ;
+    color: #6c7293;;
+    width: 100px;
+    margin-left: 5%;
+    top: 40px;
+}
+.dropdown-content a{
+    float: none;
+    display: block;
+    padding: 10px 15px;
+    color: #6c7293;;
+    text-align: left;
+    padding-left: 0px;
+    font-family: 'Roboto',sans-serif;
+}
+.dropdown-content a:hover{
+    color: #EB1616;
+    transition: all 0.2s ease-in-out;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  color: #6c7293;
+  border-radius: 5px;
+  background-color: #191C24;
+}
+
+/*End dropdown toggle */
+
+/* customer-table-section */
+#admin-section{
+    background-color: #000000;
+    height: 700px;
+    padding-top: 6%;
+    width: 100%;
+    margin-left: 18%;
+}
+.customer-list{
+    color: #ffff;
+    background-color: #191C24;
+    margin-left: 2%;
+    width: 73%;
+    border-radius: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+.customer-list h6{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 19px;
+    margin-bottom: -19px;
+}
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 20px 30px;
+    color: #6C7293;
+    vertical-align: top;
+}
+thead th{border-bottom: 4px solid #000000; font-size: 17px;}
+th, td{
+    border: 2px solid #000000;
+    padding: 20px 30px;
+}
+tbody a{
+    color: #6C7293;
+    padding: 3px 10px;
+}
+tbody a:hover{
+    color: #EB1616;
+    transition: 0.3s all ease-in-out;
+}
+/* admin list */
+.admin-list{
+    color: #ffff;
+    background-color: #191C24;
+    margin-left: 2%;
+    width: 73%;
+    border-radius: 10px;
+    padding-top: 1px;
+    margin-top: 3%;
+    padding-bottom: 1px;
+}
+.admin-list h6{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 19px;
+    margin-bottom: -19px;
+}
+.admin-table{
+    width: 92%;
+}
+</style>
+<body>
+    <!-- Sidebar Start -->
+    <section id="slidebar-section">
+        <div class="main-slidebar">
+               <div class="slidebar-logo">
+                    <a href="admin-dashboard.html" class="">
+                        <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Pizzon</h3>
+                    </a>
+               </div>
+
+               <div class="slidebar-img">
+                    <div class="admin-img">
+                        <img src="admin-img/customer-11.jpg"><i class="fa-solid fa-circle"></i>
+                        <h3>Devkota <span>Admin</span></h3><br>
+                    </div>
+               </div>
+           
+            <!-- admin-horizontal-navbar -->
+
+               <div class="admin-horizontal-navbar">
+                   <ul class="nav-bar">
+                       <li><a href="admin-dashboard.html"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                       <li class="active"><a class="active"  href="#"><i class="fa-solid fa-user-group"></i>Customers</a></li>
+                       <li><a  href="admin-menu.html"><i class="fa-solid fa-pizza-slice"></i>Menus</a></li>
+                       <li><a  href="order.html"><i class="fa-solid fa-motorcycle"></i>Orders</a></li>
+                       <li><a  href="admin-reservation.html"><i class="fa fa-table me-2"></i>Reservations</a></li>
+                       <li><a  href="admin-profile.html"><i class="fa-solid fa-user"></i>Profile</a></li>
+                   </ul>
+               </div>
+
+               <!-- END admin-horizontal-navbar -->
+         </div>
+    </section>
+
+
+    <!-- START admin-vertical-navbar -->
+    <section id="navbar-section">
+           <div class="main-navbar">       
+                <div class="admin-vertical-navbar">
+                    <ul class="nav-bar1">
+                        <li><a href="#" id="btn"><i class="fa fa-bars"></i></a></li>
+                        <input type="search" class="form-control" placeholder="Search...">
+                    </ul>
+
+                    <ul class="nav-bar2">
+                        <div class="dropdown-msg">
+                            <div class="dropdown-btn-msg">
+                               <a href="#"><span></span><i class="fa fa-envelope me-lg-2"></i>Message<i id="icon-message" class="fa-solid fa-caret-down"></i></a>
+                                  <div class="dropdown-content1">
+                                     <a href="#">
+                                        <h6>Harry Send you a Message</h6>
+                                        <small>15 minutes ago</small>
+                                     </a>
+
+                                       <hr class="hr-part">
+
+                                       <a href="#">
+                                          <h6>Jones Send you a Message</h6>
+                                          <small>15 minutes ago</small>
+                                        </a>
+
+                                        <hr class="hr-part">
+
+                                     <div class="ms-txt">
+                                        <a href="#">See All message</a></span>  
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-notification">
+                            <a href="#"class="notify"> <span></span> <i class="fa fa-bell me-lg-2"></i>Notification</a>
+                         </div>
+                        
+                            <div class="dropdown">
+                                <div class="dropdown-btn">
+                                    <a href="#"><img src="admin-img/customer-11.jpg">
+                                        <span class="btntext">Devkota</span>
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a href="admin-profile.html">Profile</a></li>
+                                        <a href="admin-login.html">Logout</a>  
+                                    </div>
+                                </div>
+                            </div>
+                    </ul>
+                </div>
+           </div>
+        </section>
+
+        <section id="admin-section">
+               <div class="customer-list">
+                    <h6>Customer List</h6>
+                     <table class="customer-table">
+                           <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Username</th>
+                                    <th>Email Address</th>
+                                    <th>Phone No.</th>
+                                    <th>Password</th>
+                                    <th>Action</th>
+                                </tr>
+                           </thead>
+                           <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Sandesh</td>
+                                    <td>Sandesh.devkota90@gmail.com</td>
+                                    <td>9816125889</td>
+                                    <td>devkota123</td>
+                                    <td>
+                                        <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>Sandesh</td>
+                                    <td>Sandesh.devkota90@gmail.com</td>
+                                    <td>9816125889</td>
+                                    <td>devkota123</td>
+                                    <td>
+                                        <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                                    </td>
+                                </tr>
+                           </tbody>
+                     </table>
+               </div>
+
+
+               <div class="admin-list">
+                <h6>Admin List</h6>
+                 <table class="admin-table">
+                       <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Username</th>
+                                <th>Email Address</th>
+                                <th>Password</th>
+                                <th>Action</th>
+                            </tr>
+                       </thead>
+                       <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Admin</td>
+                                <td>adminuser@gmail.com</td>
+                                <td>Admin</td>
+                                <td>
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>User</td>
+                                <td>useradmin@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                       </tbody>
+                 </table>
+           </div>
+        </section>
+
+
+<script>
+       
+            // Sidebar Toggler
+        $(document).ready(function(){
+            $("#btn").click(function()
+            {
+                $("#slidebar-section").animate({
+                    width: "toggle"
+                });
+                $("#navbar-section").toggleClass("toggle-class");
+                $(".nav-bar2").toggleClass("nav-bar-toggle");
+                // $("p").css({"background-color": "yellow", "font-size": "200%"});
+                $("#admin-section").css({"margin-left":"0px"});
+                $(".customer-list").css({"width":"75%","margin-left":"19%"});
+                $(".admin-list").css({"width":"75%","margin-left":"19%"});
+            });
+        });
+        </script>
+</body>
+</html>
