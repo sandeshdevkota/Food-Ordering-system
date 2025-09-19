@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://kit.fontawesome.com/61789a3227.js" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142494086-2"></script>
+    
+    <link rel="icon" type="image/x-icon" href="img/fav-icon.png">
+    
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<style>
+    /* - Google Fonts //---------------- */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+*{
+	padding:0;
+	margin:0;
+}
+.menu-bar a.active{
+    bottom:-10px;
+    color: #fd9d3e !important;
+    border-bottom:5px solid #fd9d3e;
+}
+
+section{
+    overflow-x: hidden;
+}
+#main-menu-section{
+    background-image:url(img/shopping-cart-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 400px;
+}
+.navbar-header img{
+    margin-left: 20%;
+    padding: 15px 18px;
+}
+.nav-bar{
+    display: inline-flex;
+    width: 100%;
+    padding-top: 15px;
+}
+.menu{
+    margin-left: 4%;
+    width: 37%;
+}
+.menu li{
+    display: inline-flex;
+    text-decoration-style:none;
+    list-style-type: none;  
+    line-height:40px;
+    color: #fff;
+}
+.menu a:hover{
+    bottom:-10px;
+    color: #fd9d3e;
+    border-bottom:5px solid #fd9d3e;
+}
+.nav-bar a{
+    text-decoration:none;
+    list-style-type: none;  
+    line-height:45px;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+.menu-1{
+    margin-left: 0%; 
+    display: flex !important;
+    width: 20%;  
+}
+.menu-1 li{
+    display: flex !important;
+    text-decoration-style:none;
+    list-style-type: none;  
+    line-height:40px;
+    color: #fff;
+}
+.menu-1 li:hover{
+    color:#fd9d3e !important;
+    transform: scale(1.1);
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+.menu-1 i{
+    padding-top: 12px;
+    font-size: 16px;
+    line-height:45px;
+    color:#fd9d3e;
+}
+.menu-1 a{
+    text-decoration:none;
+    list-style-type: none;  
+    line-height:45px;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+.menu-2{
+    margin-left: 1%; 
+    display: flex;
+}
+.menu-2 button{
+    border-radius: 50px;
+    background-color:#91b842;
+    border: 0px;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 5%;
+}
+.menu-2 button:hover{
+    background-color: #fd9d3e;
+    box-shadow: 0 0 15px #fd9d3e;
+    border-color: #fd9d3e;
+    transition: background-color 1.5s;
+}
+.menu-2 i{
+    padding-top: 12px;
+    font-size: 30px;
+    line-height:45px;
+    color:rgba(255, 99, 71, 0.6)
+}
+.menu-2 i:hover{
+    cursor: pointer;
+    color: rgb(255, 0, 0);
+}
+/* drowdown */
+.dropdown{
+    position: relative;
+    display:inline-block;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #100f0f81;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-top: 6%;
+}
+
+.dropdown-content a {
+  color: #fefefe;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #fd9d3e}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #121619;
+}
+/* END DROPDOWN */
+/*menu-Banner*/
+.main-menu-banner{
+    overflow-y: hidden;
+}
+.menu-banner h2{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 60px;
+    color: #fefefe;
+    text-transform: uppercase;
+    user-select: none;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 60px;
+}
+.menu-banner ul{display: flex; list-style: none; margin-left: 44%;}
+.menu-banner a{text-decoration: none; color: #fefefe; padding: 3px; }
+.menu-banner a:hover{color: #fd9d3e;}
+
+/* CHECK OUT SECTION */
+#checkout-section{
+    margin-top: 5%;
+}
+.checkout-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.checkout-row{
+    width: 100%;
+}
+.checkout-column1{
+  float: left;
+  font-family: "PT Sans Normal", sans-serif;
+  margin-left: 7%;
+  width: 52.50%;
+  padding: 5px 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.checkout-column2{
+  float: left;
+  margin-left: 2%;
+  font-family: "PT Sans Normal", sans-serif;
+  width: 26.50%;
+  padding: 5px 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+/* checkout column1 */
+.checkout-txt h3{
+    font-size: 20px;
+    line-height: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.form-group label {
+    display: block;
+    color: #121619;
+    font-size: 15px;
+    font-family: "PT Sans Normal", sans-serif;
+    margin: 0px 0px 8px;
+    margin-top: 20px;
+}
+input {
+    outline: none;
+    transition: all 400ms ease;
+    outline: none;
+}
+.form-group input{
+    padding: 8px 15px;
+    width: 96%;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    min-height: 30px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.form-street-town{
+    display: inline-flex;
+    white-space: nowrap;
+}
+.form-street-town input{
+    width: 410.50%;
+}
+.form-town{
+    margin-left: 70%;
+}
+.checkout-text{
+    margin-top: 10%;
+}
+.check-box{
+    margin-top: 2%;
+}
+.check-box label{
+    cursor: pointer;
+    line-height: 17px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 17px;
+    color: #121619;
+    font-family: "PT Sans Normal", sans-serif;
+}
+.check-box input{
+    margin: 5px 0px 0px;
+    size: 50%;
+}
+.order-notes{
+    margin-top: 3%;
+}
+.order-notes h4{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: #1d1d1d;
+}
+.notes{
+    border: 1px solid #9999;
+}
+.order-notes p{
+    color: #9999;
+    font-size: 15px;
+    padding: 20px 25px;
+    text-align: normal;
+}
+/* CHECKOUT COLUMN 2 */
+.order-list ul{
+    list-style: none;
+    margin-top: 20px;
+}
+.order-list li{display: inline-flex;}
+.pro-media img {width: 110px; border: 1px solid #9999; height: 86px;}
+.pro-detail-info{
+    padding-left: 15px;
+}
+.pro-detail-info a{
+    font-size: 16px;
+    font-weight: bold;
+    color: #121619;
+    text-decoration: none;
+    font-family: "PT Sans Narrow", sans-serif;
+}
+.price-box span{font-size:  18px;color: #fd9d3e;}
+.price-box del{font-size:  14px;color: #8888;}
+.checkout-qty{color: #9999; font-size: 16px; font-family: "PT Sans Narrow", sans-serif; padding-top: 5px;}
+
+.checkout-hr{
+    color:#f8f9fa;
+    opacity: 2;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+/* CHECKOUT TABLE */
+.checkout-main-table{
+    margin-top: 50px;
+}
+.checkout-table{width: 100%; background-color: #f8f9fa;}
+.checkout-table td {
+    padding: .75rem;
+    vertical-align: top;
+    font-size: 16px;
+    color: #212529;
+    font-family: "PT Sans Narrow", sans-serif;
+    border-top: 1px solid #dee2e6;
+}
+.checkout-table { border: 1px solid #9999;}
+.place-order-btn button{
+    background: #fd9d3e;
+    border: 1px solid #fd9d3e;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: "PT Sans Narrow", sans-serif;
+    width: 100%;
+    padding: 17px 41px;
+    letter-spacing: 1px;
+    margin-top: 9%;
+    text-transform: uppercase;
+}
+.place-order-btn button:hover{
+    background: white;
+    color: #fd9d3e;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/*----------------------------
+         footer
+----------------------------*/
+#footer-section{
+    margin: 0;
+    margin-top: 6%;
+    background-color: #1d1d1d;;
+}
+.footer-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.footer-column1{
+  float: left;
+  margin-top: 7%;
+  margin-left: 5%;
+  width: 20.50%;
+  padding: 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.footer-column2{
+  float: left;
+  margin-top: 7%;
+  margin-left: 5%;
+  width: 23.50%;
+  white-space: nowrap;
+  padding: 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.footer-des{font-size: 14px; color: #fff; max-width: 240px; padding-top: 35px; padding-bottom: 10px;}
+.footer-logo ul li{font-size: 14px; color: #fff; list-style: none; padding: 10px 0px; text-transform: uppercase;}
+.footer-logo ul li a{font-size: 14px; color: #fff; text-decoration: none; padding-left: 5px; text-transform: lowercase}
+.footer-logo ul li a:hover{color: #fd9d3e;}
+
+
+.opening-hours h2{font-size: 20px; color: #fff; text-transform: uppercase !important; font-weight: 700; letter-spacing: 1px; padding-top: 11px;}
+.opening-hours ul{max-width: 240px; list-style: none; padding-top: 50px;}
+.opening-hours ul li{font-size: 14px; color: #fff; padding: 9px 0px; letter-spacing: 1px;}
+.opening-hours ul li span{float: right;  white-space: nowrap; }
+span.footer-close {background: #fd9d3e; padding: 2px 16px;}
+
+
+.useful-links h2{font-size: 20px; color: #fff; text-transform: uppercase !important; font-weight: 700; letter-spacing: 1px; padding-top: 11px;}
+.useful-links ul{padding-top: 50px; list-style: none;}
+.useful-links ul li{padding-bottom: 2px;}
+.useful-links ul li a{font-size: 14px; color: #fff; letter-spacing: 1px;}
+.useful-links ul li a:hover{color: #fd9d3e;}
+
+hr.footer-hr{
+    margin-left: 6%;
+    margin-right: 10%;
+    border-bottom: 0.5px solid #202529;
+}
+.copyright-box{
+    display: flex;
+}
+.copy-text{margin-left: 6%; padding: 25px 0px; color: #fefefe;}
+.copy-text a{color: #fd9d3e; text-decoration: none;}
+.copy-text a:hover{text-decoration: underline;}
+.copyright-box ul{ list-style: none; margin-left: 40%; display: flex;}
+.copyright ul{text-align: right; margin-top: 10px;}
+.copyright ul li{display: inline-block; padding-left: 8px;}
+.copyright ul li a{color: #fff; background: #242628; width: 40px; height: 40px; line-height: 40px; display: block; text-align: center;}
+.copyright ul li a:hover{background: #fd9d3e;}
+</style>
+<body>
+    <section id="main-menu-section">
+        <div class="nav-bar">
+          <div class="navbar-header">
+               <a class="navbar-logo"  href="index.html"><img alt="pizzon" src="img/logo.png"></a> 
+          </div>
+          <div class="menu">
+             <ul class="menu-bar">
+                 <li><a  href="index.html">Home</a></li>
+                 <li><a  href="menu.html">Menu</a></li>
+                 <li><a href="about.html">About Us</a></li>
+                 <li><a href="Reservation.html">Reservation</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
+         </div>
+
+         <div class="menu-1">
+             <li><i class="fa-solid fa-phone"></i><a href="#">+977 061-5375634</a></li>
+             <li><i class="fa-solid fa-cart-arrow-down"></i><a href="cart.html">Cart</a></li>
+         </div>
+
+         <div class="menu-2">
+             <button><a href="menu.html">Order Online</a></button>
+             <div class="dropdown">
+                <a href="#"><img src="img/customer-11.jpg"><i class="fa-solid fa-caret-down"></i></a>
+                  <div class="dropdown-content">
+                      <a href="profile.html">Profile</a>
+                      <a href="login.html">Logout</a>
+                  </div>
+           </div>
+         </div>
+     </div>
+
+
+
+    <!----MEnu banner section-->
+    <section id="menu-banner">
+           <div class="main-menu-banner">
+                  <div class="menu-banner">
+                        <h2>CHECKOUT</h2>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="cart.html"> / Cart</a></li>
+                            <li><a href="checkout.html"> / Checkout</a></li>
+                        </ul>
+                  </div>
+           </div>
+    </section>
+</section>
+    <!----End of Menu banner section-->
+
+
+    <section id="checkout-section">
+        <form id="placeorder-form">
+            <div class="checkout-row">
+                    <div class="checkout-column1">
+                        <div class="checkout-txt">
+                            <h3>Billing Details</h3>
+                        </div>
+                        <div class="form-group">
+                            <label for="full-name">Full Name*</label>
+                            <input id="full-name" type="text" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="company-name">Company Name</label>
+                            <input id="company-name" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-no">Phone No*</label>
+                            <input id="phone-no" type="tel" maxlength="10" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address*</label>
+                            <input id="address" type="text" required="">
+                        </div>
+                        <div class="form-street-town">
+                            <div class="form-street">
+                                <div class="form-group">
+                                    <label for="street no">Street No*</label>
+                                    <input id="street no" type="number" required="">
+                                </div>
+                            </div>
+                            <div class="form-town">
+                                <div class="form-group">
+                                    <label for="city">Town / City*</label>
+                                    <input id="city" type="text" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-text">
+                            <div class="checkout-txt">
+                                <h3>SHIPPING DETAILS</h3>
+                            </div>
+                        </div>
+                        <div class="check-box">
+                            <span>
+                                <input type="checkbox" class="checkbox" id="different-address" name="Ship to a different address?">
+                                <label for="different-address">Ship to a different address?</label>
+                            </span>
+                        </div>
+                        <div class="order-notes">
+                            <h4>Order Notes</h4>
+                            <div class="notes">
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a </p>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- column 2nd -->
+                    <div class="checkout-column2">
+                        <div class="checkout-txt">
+                            <h3>YOUR ORDER</h3>
+                        </div>
+                        <div class="order-list">
+                            <ul>
+                                <li>
+                                    <div class="pro-media"> <a href="product-details.html"><img alt="pizzon" src="img/list-1.jpg"></a> </div>
+							        <div class="pro-detail-info"> <a href="shop-detail.html" class="product-title">Margherita Pizza</a>
+								        <div class="price-box"> 
+								            <span class="price">$15.34</span>
+								            <del class="price old-price">$22.00</del>
+								        </div>
+								        <div class="checkout-qty">
+								            <div>
+						                        <label>Qty: </label>
+						                        <span class="info-deta">1</span> 
+						                    </div>
+								        </div>
+							        </div>
+                                </li>
+
+                                <hr class="checkout-hr">
+
+                                <li>
+                                    <div class="pro-media"> <a href="product-details.html"><img alt="pizzon" src="img/mushroompizza.jpg"></a> </div>
+							        <div class="pro-detail-info"> <a href="product-details.html" class="product-title">Mushroom Pizza</a>
+								        <div class="price-box"> 
+								            <span class="price">$10.12</span>
+								            <del class="price old-price">$22.00</del>
+								        </div>
+								        <div class="checkout-qty">
+								            <div>
+						                        <label>Qty: </label>
+						                        <span class="info-deta">1</span> 
+						                    </div>
+								        </div>
+							        </div>
+                                </li>
+
+                                <hr class="checkout-hr">
+
+                            </ul>
+                        </div>
+
+                              <!-- CHECKOUT TABLE -->
+
+                        <div class="checkout-main-table">
+                            <table class="checkout-table">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Order Places :</b></td>
+                                        <td>17 February 2020</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Total :</b></td>
+                                        <td><div class="price-box"> <span class="price">$25.46</span> </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Payment :</b></td>
+                                        <td>COD</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Order No. :</b></td>
+                                        <td><input type="tel" placeholder="12345"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                                <div class="place-order-btn">
+                                    <a href="#"><button>PLACE ORDER</button></a>
+                                </div>
+                            
+                        </div>
+
+                    </div>
+            </div>
+        </form>
+    </section>
+
+
+     <!-- footer section -->
+<footer id="footer-section">
+    <div class="main-footer">
+           <div class="footer-row">
+                  <div class="footer-column1">
+                      <div class="footer-logo">
+                        <a class="navbar-logo"  href="index.html"><img alt="pizzon" src="img/logo.png"></a> 
+                            <p class="footer-des">20 Carrochan Rd, Balloch, Alexandria G83 8EG, UK 69QJ+2F Alexandria, United Kingdom</p>
+                            <ul>
+								<li>phone  - <a href="+911234567890">+91 123 456 789 , +91 123 456 789 </a></li>
+								<li>email  - <a href="mailto: sandesh.devkota90@gmail.com&subject=&body=">supportPizzon@mail</a></li>
+							</ul>
+                      </div>
+                  </div>
+                  <div class="footer-column2">
+                    <div class="opening-hours">
+                        <h2>Opening Hours</h2>
+                        <ul>
+                            <li>Mon - Tues :  <span>6.00 am - 10.00 pm</span></li>
+                            <li>Wed - Thur : <span>6.00 am - 10.00 pm</span></li>
+                            <li>Launch :  <span>Everyday</span></li>
+                            <li>Sunday :  <span class="footer-close">Closed</span></li>
+                        </ul>
+                    </div>
+                  </div>
+                  <div class="footer-column1">
+                    <div class="useful-links">
+                        <h2>useful links</h2>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Order Tracking</a></li>
+                            <li><a href="#">Warranty and Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                        </ul>
+                    </div>
+                  </div>
+           </div>
+           
+
+           <div class="copyright">
+            <hr class="footer-hr">
+                <div class="copyright-box">
+                    <p class="copy-text">© Pizzon all Rights Reserved. Designed by <a href="http://www.sandeshdevkota.com.np/">Sandesh.com.np</a></p>
+                    <ul class="footer-list">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+           </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://kit.fontawesome.com/61789a3227.js" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142494086-2"></script>
+    
+    <link rel="icon" type="image/x-icon" href="img/login-fav.png">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+
+    <script>
+        function conform()
+        {
+            var username=document.getElementById('username').value;
+            var password=document.getElementById('password').value;
+
+        if(username=="admin" && password=="admin")
+           {
+                alert("Login Successfull !! WELCOME")
+                window.location.href = "index.html";
+	            return false;
+            }
+
+            else
+            {
+	            alert("login Failed");
+            }
+        }
+    </script>
+
+
+    <!--------SCRIPT for show PASSWORD TOGGLE-------->
+<script>
+    function showpassword() {
+      var x = document.getElementById("password");
+      if (x.type === "password") 
+      {
+        x.type = "text";
+      } 
+      else 
+      {
+        x.type = "password";
+      }
+    }
+    </script>
+</head>
+<style>
+     /* - Google Fonts //---------------- */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+*{
+	padding:0;
+	margin:0;
+}
+.menu-bar a.active{
+    bottom:-10px;
+    color: #fd9d3e !important;
+    border-bottom:5px solid #fd9d3e;
+}
+
+section{
+    overflow-x: hidden;
+}
+#main-bar{
+    background-image:url(img/landingpage-bg11.jpg);
+    background-position: top;
+    background-repeat: repeat;
+    position: relative;
+    overflow-y: hidden !important;
+}
+.navbar-header img{
+    margin-left: 20%;
+    padding: 15px 18px;
+}
+.nav-bar{
+    display: inline-flex;
+    width: 100%;
+    padding-top: 15px;
+}
+.menu{
+    margin-left: 15%;
+}
+.menu li{
+    display: inline-flex;
+    text-decoration-style:none;
+    list-style-type: none;  
+    line-height:40px;
+    color: #fff;
+}
+.menu a:hover{
+    bottom:-10px;
+    color: #fd9d3e;
+    border-bottom:5px solid #fd9d3e;
+}
+.nav-bar a{
+    text-decoration:none;
+    list-style-type: none;  
+    line-height:45px;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+.menu-1{
+    margin-left: 9%; 
+}
+.menu-1 li{
+    display: inline-flex;
+    text-decoration-style:none;
+    list-style-type: none;  
+    line-height:40px;
+    color: #fff;
+}
+.menu-1 li:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.menu-1 a:hover{
+    color: #fd9d3e;
+}
+.menu-1 i{
+    padding-top: 12px;
+    font-size: 19px;
+    line-height:45px;
+    color:#fd9d3e;
+}
+.menu-1 a{
+    text-decoration:none;
+    list-style-type: none;  
+    line-height:45px;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+.menu-2{
+    margin-left: 2%; 
+    padding-top: 13px;
+}
+.menu-2 button{
+    border-radius: 50px;
+    background-color:#91b842;
+    border-color: #91b842;
+    cursor: pointer;
+}
+.menu-2 button:hover{
+    background-color: #fd9d3e;
+    box-shadow: 0 0 15px #fd9d3e;
+    border-color: #fd9d3e;
+    transition: background-color 1.5s;
+}
+.menu-2 i{
+    padding-top: 12px;
+    font-size: 16px;
+    line-height:45px;
+    color:#fd9d3e;
+}
+
+/* login section */
+.main-div{
+	background-image: url(img/backimg.jpg);
+    padding: 30px;  
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+}
+.transparent-bg{
+	background:rgba(0,0,0,0.4);
+    margin-left: 20%;
+    margin-right: 10%;
+    margin-top: 5%;
+    border-bottom: 10px solid #ff5879;
+    width: 60%;
+    margin-bottom: 10%;
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
+}
+.login-face img{ margin-top: 5%; width: 120px; height: 120px;}
+.checkout-txt{   
+    color: #ff5879 !important;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: none;
+    margin: 26px auto 0;
+}
+.checkout-txt{margin-bottom: 4%;}
+.form-group{margin-top: 1%;}
+
+.form-group label {
+    display: block;
+    color: #ff5879;
+    font-size: 20px;
+    margin-right: 44%;
+    font-family:  sans-serif;
+}
+
+input {
+    outline: none;
+    transition: all 400ms ease;
+    outline: none;
+}
+.form-group input{
+    padding: 8px 10px;
+    width: 60%;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    min-height: 30px;
+    margin-left: 50px;
+}
+
+::placeholder{
+    color: #999999;
+    font-size: 18px;
+}
+.form-group1{
+    display: flex;
+    margin-top: 5px;
+    margin-left: 21.50%;
+    color: #ff5879;
+    font-family:  sans-serif;
+}
+.form-group1 label{
+    padding-left: 5px;
+    font-size: 17px;
+}
+.place-order-btn button{
+    background: #ff5879 ;
+    border: 1px solid #ff5879 ;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: "PT Sans Narrow", sans-serif;
+    width: 62%;
+    margin-left: 60px;
+    padding: 17px 41px;
+    letter-spacing: 1px;
+    margin-top: 3%;
+    margin-bottom: 7%;
+    text-transform: uppercase;
+}
+.place-order-btn button:hover{
+    background: forestgreen;
+    color: #fd9d3e;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+form a{
+    text-decoration: none;
+    color: #ff5879;
+}
+form a:hover{
+    text-decoration: underline;
+}
+.top-menu-banner-img22 img{
+    margin-top: -1.50%;
+    width: 100%;
+    position: absolute;
+}
+.bottom-banner-img img{
+    margin-top: -4.80%;
+    width: 100%;
+    position: absolute;
+}
+/*----------------------------
+         footer
+----------------------------*/
+#footer-section{
+    margin: 0;
+    background-color: #1d1d1d;;
+}
+.footer-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.footer-column1{
+  float: left;
+  margin-top: 7%;
+  margin-left: 5%;
+  width: 20.50%;
+  padding: 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.footer-column2{
+  float: left;
+  margin-top: 7%;
+  margin-left: 5%;
+  width: 23.50%;
+  white-space: nowrap;
+  padding: 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.footer-des{font-size: 14px; color: #fff; max-width: 240px; padding-top: 35px; padding-bottom: 10px;}
+.footer-logo ul li{font-size: 14px; color: #fff; list-style: none; padding: 10px 0px; text-transform: uppercase;}
+.footer-logo ul li a{font-size: 14px; color: #fff; text-decoration: none; padding-left: 5px; text-transform: lowercase}
+.footer-logo ul li a:hover{color: #fd9d3e;}
+
+
+.opening-hours h2{font-size: 20px; color: #fff; text-transform: uppercase !important; font-weight: 700; letter-spacing: 1px; padding-top: 11px;}
+.opening-hours ul{max-width: 240px; list-style: none; padding-top: 50px;}
+.opening-hours ul li{font-size: 14px; color: #fff; padding: 9px 0px; letter-spacing: 1px;}
+.opening-hours ul li span{float: right;  white-space: nowrap; }
+span.footer-close {background: #fd9d3e; padding: 2px 16px;}
+
+
+.useful-links h2{font-size: 20px; color: #fff; text-transform: uppercase !important; font-weight: 700; letter-spacing: 1px; padding-top: 11px;}
+.useful-links ul{padding-top: 50px; list-style: none;}
+.useful-links ul li{padding-bottom: 2px;}
+.useful-links ul li a{font-size: 14px; color: #fff; letter-spacing: 1px;}
+.useful-links ul li a:hover{color: #fd9d3e;}
+
+hr{
+    margin-left: 6%;
+    margin-right: 10%;
+    border-bottom: 0.5px solid #202529;
+}
+.copyright-box{
+    display: flex;
+}
+.copy-text{margin-left: 6%; padding: 25px 0px; color: #fefefe;}
+.copy-text a{color: #fd9d3e; text-decoration: none;}
+.copy-text a:hover{text-decoration: underline;}
+.copyright-box ul{ list-style: none; margin-left: 40%; display: flex;}
+.copyright ul{text-align: right; margin-top: 10px;}
+.copyright ul li{display: inline-block; padding-left: 8px;}
+.copyright ul li a{color: #fff; background: #242628; width: 40px; height: 40px; line-height: 40px; display: block; text-align: center;}
+.copyright ul li a:hover{background: #fd9d3e;}
+
+</style>
+<body>
+    <section id="main-bar">
+        <div class="nav-bar">
+          <div class="navbar-header">
+               <a class="navbar-logo"  href="index.html"><img alt="pizzon" src="img/logo.png"></a> 
+          </div>
+          <div class="menu">
+             <ul class="menu-bar">
+                 <li><a href="landingpage.html">Home</a></li>
+                 <li><a href="singup.html">Menu</a></li>
+                 <li><a href="singup.html">About Us</a></li>
+                 <li><a href="singup.html">Reservation</a></li>
+                 <li><a href="singup.html">Contact</a></li>
+             </ul>
+         </div>
+
+         <div class="menu-1">
+             <li><i class="fa-solid fa-arrow-right-to-bracket"></i><a href="signup.html">Sign up</a></li>
+             <li><i class="fa-solid fa-cart-arrow-down"></i><a href="signup.html">Cart</a></li>
+         </div>
+
+     </div>
+
+<!---- banner section-->
+
+ </section>
+
+    <!-- login section -->
+    <section id="login-section">
+        <div class="top-menu-banner-img22">
+            <img src="img/top-menu-banner-img.png">
+        </div>
+                <div class="main-div">
+                    <form class="transparent-bg">
+
+                        <div class="login-face">
+                             <img src="img/242456.png">
+                        </div>
+
+                        <div class="checkout-txt">
+                            <h3>Login Now</h3>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username*</label>
+                            <input id="username" type="text" placeholder="Enter Username" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password*</label>
+                            <input id="password" type="password" placeholder="Enter Password" required="">
+                        </div>
+                        <div class="form-group1">
+                            <input id="checkbox" type="checkbox" value="Show Password" onclick="showpassword()">
+                            <label for="checkbox">Show Password</label>
+                        </div>
+
+                        <div class="place-order-btn">
+                            <button type="button" onclick="conform()">Login</button>
+                         </div>
+                         <a href="Signup.html">Don't have an account?</a><br><br>
+                         <a href="forgotpassword.html">Forgot Password?</a><br><br>
+
+                   </form>
+                </div>
+                <div class="bottom-banner-img">
+                    <img src="img/menu-bottom-bg.png">
+               </div>
+    </section>
+
+    <footer id="footer-section">
+        <div class="main-footer">
+               <div class="footer-row">
+                      <div class="footer-column1">
+                          <div class="footer-logo">
+                            <a class="navbar-logo"  href="index.html"><img alt="pizzon" src="img/logo.png"></a> 
+                                <p class="footer-des">20 Carrochan Rd, Balloch, Alexandria G83 8EG, UK 69QJ+2F Alexandria, United Kingdom</p>
+                                <ul>
+                                    <li>phone  - <a href="+911234567890">+91 123 456 789 , +91 123 456 789 </a></li>
+                                    <li>email  - <a href="mailto: sandesh.devkota90@gmail.com&subject=&body=">supportPizzon@mail</a></li>
+                                </ul>
+                          </div>
+                      </div>
+                      <div class="footer-column2">
+                        <div class="opening-hours">
+                            <h2>Opening Hours</h2>
+                            <ul>
+                                <li>Mon - Tues :  <span>6.00 am - 10.00 pm</span></li>
+                                <li>Wed - Thur : <span>6.00 am - 10.00 pm</span></li>
+                                <li>Launch :  <span>Everyday</span></li>
+                                <li>Sunday :  <span class="footer-close">Closed</span></li>
+                            </ul>
+                        </div>
+                      </div>
+                      <div class="footer-column1">
+                        <div class="useful-links">
+                            <h2>useful links</h2>
+                            <ul>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Order Tracking</a></li>
+                                <li><a href="#">Warranty and Services</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                            </ul>
+                        </div>
+                      </div>
+               </div>
+               
+    
+               <div class="copyright">
+                <hr>
+                    <div class="copyright-box">
+                        <p class="copy-text">© Pizzon all Rights Reserved. Designed by <a href="http://www.sandeshdevkota.com.np/">Sandesh.com.np</a></p>
+                        <ul class="footer-list">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+               </div>
+        </div>
+    </footer>
+</body>
+</html>
